@@ -1,0 +1,10 @@
+flask
+flask_cors
+youtube_transcript_api
+googletrans
+transformers
+speech_recognition
+pydub
+youtube_dl
+os
+gunicorn
