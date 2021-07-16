@@ -6,5 +6,4 @@ transformers
 SpeechRecognition
 pydub
 youtube_dl
-os
 gunicorn
