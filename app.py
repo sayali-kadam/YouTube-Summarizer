@@ -19,12 +19,9 @@ def SpeechRecognition():
     with sr.AudioFile('transcript.wav') as source:
         audio = r.record(source)
         text = r.recognize_google(audio)
-        print('Working....')
-        print(text)
     return text  
 
 def transcript_text(video_id):
-    print(video_id)
     result = ""
     try:
         transcript = YouTubeTranscriptApi.get_transcript(video_id)
@@ -38,14 +35,11 @@ def transcript_text(video_id):
                 if filename.endswith(tuple(formats_to_convert)):
                     sound = AudioSegment.from_file(filename, "m4a").set_frame_rate(441)
                     sound.export("transcript.wav", format="wav", bitrate='32k')
-                    print(filename)
                     result = SpeechRecognition()
                     os.remove(filename)
                     os.remove("transcript.wav")
     translation = translator.translate(result, dest="en")
     translation = translation.text
-    print(translation)
-    print(len(translation))
     return translation
 
 def summarized_text(transcript, video_id):
@@ -61,8 +55,6 @@ def summarized_text(transcript, video_id):
         temp = tokenizer.decode(outputs[0])
         summarized_text += ' ' + temp
 
-    print(len(summarized_text))
-    print(summarized_text)
     return summarized_text
 
 
