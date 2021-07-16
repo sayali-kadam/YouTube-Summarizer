@@ -3,7 +3,7 @@ flask_cors
 youtube_transcript_api
 googletrans
 transformers
-speech_recognition
+SpeechRecognition
 pydub
 youtube_dl
 os
