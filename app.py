@@ -66,7 +66,7 @@ def summarized_text(transcript, video_id):
     return summarized_text
 
 
-@app.route('/api/summarize/<string:youtube_video>', methods=['GET'])
+@app.route('/api/summarize/<string:youtube_video>', methods=['GET','POST'])
 def YouTube_Video(youtube_video):
     transcript = transcript_text(youtube_video)
     summary = summarized_text(transcript, youtube_video)
