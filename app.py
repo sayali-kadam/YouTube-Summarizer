@@ -22,10 +22,10 @@ def SpeechRecognition():
     return text  
 
 def transcript_text(video_id):
-    # result = ""
-    # transcript = YouTubeTranscriptApi.get_transcript(video_id)
-    # for i in transcript:
-    #     result += ' ' + i['text']
+    result = ""
+    transcript = YouTubeTranscriptApi.get_transcript(video_id)
+    for i in transcript:
+        result += ' ' + i['text']
     # try:
     #     transcript = YouTubeTranscriptApi.get_transcript(video_id)
     #     for i in transcript:
