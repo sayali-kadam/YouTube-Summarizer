@@ -41,10 +41,10 @@ def transcript_text(video_id):
     #                 result = SpeechRecognition()
     #                 os.remove(filename)
     #                 os.remove("transcript.wav")
-    translation = translator.translate(result, src="en", dest="en")
-    # translation = translation.text
-    # return translation
-    return "<p>Hello, World!</p>"
+    src_lang = translator.detect(result)
+    translation = translator.translate(result, src=src_lang.lang, dest="en")
+    translation = translation.text
+    return translation
 
 def summarized_text(transcript, video_id):
     model = T5ForConditionalGeneration.from_pretrained("t5-base")
