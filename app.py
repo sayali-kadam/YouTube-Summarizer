@@ -22,10 +22,10 @@ def SpeechRecognition():
     return text  
 
 def transcript_text(video_id):
-    result = ""
-    transcript = YouTubeTranscriptApi.get_transcript(video_id)
-    for i in transcript:
-        result += ' ' + i['text']
+    # result = ""
+    # transcript = YouTubeTranscriptApi.get_transcript(video_id)
+    # for i in transcript:
+    #     result += ' ' + i['text']
     # try:
     #     transcript = YouTubeTranscriptApi.get_transcript(video_id)
     #     for i in transcript:
@@ -41,9 +41,10 @@ def transcript_text(video_id):
     #                 result = SpeechRecognition()
     #                 os.remove(filename)
     #                 os.remove("transcript.wav")
-    translation = translator.translate(result, dest="en")
-    translation = translation.text
-    return translation
+    # translation = translator.translate(result, dest="en")
+    # translation = translation.text
+    # return translation
+    return "<p>Hello, World!</p>"
 
 def summarized_text(transcript, video_id):
     model = T5ForConditionalGeneration.from_pretrained("t5-base")
