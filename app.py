@@ -23,21 +23,24 @@ def SpeechRecognition():
 
 def transcript_text(video_id):
     result = ""
-    try:
-        transcript = YouTubeTranscriptApi.get_transcript(video_id)
-        for i in transcript:
-            result += ' ' + i['text']
-    except Exception as e:
-        URL = "https://www.youtube.com/watch?v="+video_id
-        audio_downloader.extract_info(URL)
-        for (dirpath, dirnames, filenames) in os.walk("D:/Projects/YouTube-Summarizer/", topdown=True):
-            for filename in filenames:
-                if filename.endswith(tuple(formats_to_convert)):
-                    sound = AudioSegment.from_file(filename, "m4a").set_frame_rate(441)
-                    sound.export("transcript.wav", format="wav", bitrate='32k')
-                    result = SpeechRecognition()
-                    os.remove(filename)
-                    os.remove("transcript.wav")
+    transcript = YouTubeTranscriptApi.get_transcript(video_id)
+    for i in transcript:
+        result += ' ' + i['text']
+    # try:
+    #     transcript = YouTubeTranscriptApi.get_transcript(video_id)
+    #     for i in transcript:
+    #         result += ' ' + i['text']
+    # except Exception as e:
+    #     URL = "https://www.youtube.com/watch?v="+video_id
+    #     audio_downloader.extract_info(URL)
+    #     for (dirpath, dirnames, filenames) in os.walk("D:/Projects/YouTube-Summarizer/", topdown=True):
+    #         for filename in filenames:
+    #             if filename.endswith(tuple(formats_to_convert)):
+    #                 sound = AudioSegment.from_file(filename, "m4a").set_frame_rate(441)
+    #                 sound.export("transcript.wav", format="wav", bitrate='32k')
+    #                 result = SpeechRecognition()
+    #                 os.remove(filename)
+    #                 os.remove("transcript.wav")
     translation = translator.translate(result, dest="en")
     translation = translation.text
     return translation
