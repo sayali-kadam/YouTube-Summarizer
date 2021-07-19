@@ -41,7 +41,7 @@ def transcript_text(video_id):
     #                 result = SpeechRecognition()
     #                 os.remove(filename)
     #                 os.remove("transcript.wav")
-    # translation = translator.translate(result, dest="en")
+    translation = translator.translate(result, dest="en")
     # translation = translation.text
     # return translation
     return "<p>Hello, World!</p>"
