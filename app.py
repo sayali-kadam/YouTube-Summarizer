@@ -65,14 +65,14 @@ def summarized_text(transcript, video_id):
 @app.route('/api/summarize/<string:youtube_video>', methods=['GET','POST'])
 def YouTube_Video(youtube_video):
     transcript = transcript_text(youtube_video)
-    summary = summarized_text(transcript, youtube_video)
-    # res = {
-    #     "Video ID": youtube_video,
-    #     "Transcript": transcript,
+    # summary = summarized_text(transcript, youtube_video)
+    res = {
+        "Video ID": youtube_video,
+        "Transcript": transcript,
     #     "Summary": summary
-    # }
-    # return jsonify(res)
-    return "<p>Hello, World!</p>"
+    }
+    return jsonify(res)
+    # return "<p>Hello, World!</p>"
 
 if __name__ == "__main__":
     app.run(debug=True)
