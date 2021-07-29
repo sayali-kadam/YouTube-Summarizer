@@ -26,6 +26,7 @@ def transcript_text(video_id):
     transcript = YouTubeTranscriptApi.get_transcript(video_id)
     for i in transcript:
         result += ' ' + i['text']
+    return result
     # try:
     #     transcript = YouTubeTranscriptApi.get_transcript(video_id)
     #     for i in transcript:
@@ -41,10 +42,9 @@ def transcript_text(video_id):
     #                 result = SpeechRecognition()
     #                 os.remove(filename)
     #                 os.remove("transcript.wav")
-    src_lang = translator.detect(result)
-    translation = translator.translate(result, src=src_lang.lang, dest="en")
-    translation = translation.text
-    return translation
+    # src_lang = translator.detect(result)
+    # translation = translator.translate(result, src=src_lang.lang, dest="en")
+    # translation = translation.text
 
 def summarized_text(transcript, video_id):
     model = T5ForConditionalGeneration.from_pretrained("t5-base")
@@ -65,14 +65,13 @@ def summarized_text(transcript, video_id):
 @app.route('/api/summarize/<string:youtube_video>', methods=['GET','POST'])
 def YouTube_Video(youtube_video):
     transcript = transcript_text(youtube_video)
-    # summary = summarized_text(transcript, youtube_video)
-    # res = {
-    #     "Video ID": youtube_video,
-    #     "Transcript": transcript,
-    #     "Summary": summary
-    # }
-    # return jsonify(res)
-    return "<p>Hello, World!</p>"
+    summary = summarized_text(transcript, youtube_video)
+    res = {
+        "Video ID": youtube_video,
+        "Transcript": transcript,
+        "Summary": summary
+    }
+    return jsonify(res)
 
 if __name__ == "__main__":
     app.run(debug=True)
