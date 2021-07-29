@@ -14,12 +14,12 @@ translator = Translator()
 audio_downloader = YoutubeDL({'format':'m4a'})
 formats_to_convert = ['.m4a']
 
-def SpeechRecognition():
-    r = sr.Recognizer()
-    with sr.AudioFile('transcript.wav') as source:
-        audio = r.record(source)
-        text = r.recognize_google(audio)
-    return text  
+# def SpeechRecognition():
+#     r = sr.Recognizer()
+#     with sr.AudioFile('transcript.wav') as source:
+#         audio = r.record(source)
+#         text = r.recognize_google(audio)
+#     return text  
 
 def transcript_text(video_id):
     result = ""
@@ -64,14 +64,15 @@ def summarized_text(transcript, video_id):
 
 @app.route('/api/summarize/<string:youtube_video>', methods=['GET','POST'])
 def YouTube_Video(youtube_video):
-    transcript = transcript_text(youtube_video)
-    summary = summarized_text(transcript, youtube_video)
-    res = {
-        "Video ID": youtube_video,
-        "Transcript": transcript,
-        "Summary": summary
-    }
-    return jsonify(res)
+    # transcript = transcript_text(youtube_video)
+    # summary = summarized_text(transcript, youtube_video)
+    # res = {
+    #     "Video ID": youtube_video,
+    #     "Transcript": transcript,
+    #     "Summary": summary
+    # }
+    # return jsonify(res)
+    return "<p>Hello, World!</p>"
 
 if __name__ == "__main__":
     app.run(debug=True)
