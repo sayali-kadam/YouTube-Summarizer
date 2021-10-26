@@ -14,37 +14,34 @@ translator = Translator()
 audio_downloader = YoutubeDL({'format':'m4a'})
 formats_to_convert = ['.m4a']
 
-# def SpeechRecognition():
-#     r = sr.Recognizer()
-#     with sr.AudioFile('transcript.wav') as source:
-#         audio = r.record(source)
-#         text = r.recognize_google(audio)
-#     return text  
+def SpeechRecognition():
+    r = sr.Recognizer()
+    with sr.AudioFile('transcript.wav') as source:
+        audio = r.record(source)
+        text = r.recognize_google(audio)
+    return text  
 
 def transcript_text(video_id):
     result = ""
-    transcript = YouTubeTranscriptApi.get_transcript(video_id)
-    for i in transcript:
-        result += ' ' + i['text']
-    return result
-    # try:
-    #     transcript = YouTubeTranscriptApi.get_transcript(video_id)
-    #     for i in transcript:
-    #         result += ' ' + i['text']
-    # except Exception as e:
-    #     URL = "https://www.youtube.com/watch?v="+video_id
-    #     audio_downloader.extract_info(URL)
-    #     for (dirpath, dirnames, filenames) in os.walk("D:/Projects/YouTube-Summarizer/", topdown=True):
-    #         for filename in filenames:
-    #             if filename.endswith(tuple(formats_to_convert)):
-    #                 sound = AudioSegment.from_file(filename, "m4a").set_frame_rate(441)
-    #                 sound.export("transcript.wav", format="wav", bitrate='32k')
-    #                 result = SpeechRecognition()
-    #                 os.remove(filename)
-    #                 os.remove("transcript.wav")
-    # src_lang = translator.detect(result)
-    # translation = translator.translate(result, src=src_lang.lang, dest="en")
-    # translation = translation.text
+    try:
+        transcript = YouTubeTranscriptApi.get_transcript(video_id)
+        for i in transcript:
+            result += ' ' + i['text']
+    except Exception as e:
+        URL = "https://www.youtube.com/watch?v="+video_id
+        audio_downloader.extract_info(URL)
+        for (dirpath, dirnames, filenames) in os.walk("D:/Projects/YouTube-Summarizer/", topdown=True):
+            for filename in filenames:
+                if filename.endswith(tuple(formats_to_convert)):
+                    sound = AudioSegment.from_file(filename, "m4a").set_frame_rate(441)
+                    sound.export("transcript.wav", format="wav", bitrate='32k')
+                    result = SpeechRecognition()
+                    os.remove(filename)
+                    os.remove("transcript.wav")
+    src_lang = translator.detect(result)
+    translation = translator.translate(result, src=src_lang.lang, dest="en")
+    translation = translation.text
+    return translation
 
 def summarized_text(transcript, video_id):
     # model = T5ForConditionalGeneration.from_pretrained("t5-base")
