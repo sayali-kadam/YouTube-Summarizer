@@ -36,3 +36,11 @@ It is a chrome extension which will render the summary of the youtube video by m
 5. It can be used by loading unpacked from chrome://extensions/.
 
 ### Result of the project
+1. Upload the folder of the project files into chrome extensions
+![s3](https://user-images.githubusercontent.com/62012906/138929775-247db479-0c49-4f30-b16a-45f76e45e3ec.png)
+
+2. In the tab of YouTube user can see and use this extension
+![s4](https://user-images.githubusercontent.com/62012906/138929745-0dbc47ed-b2c7-44a8-8c84-197f61d7c21a.png)
+
+3. Finally summary of the video look like this
+![s5](https://user-images.githubusercontent.com/62012906/138929722-49ebb892-e069-4d24-ad5a-37eda1b7a9bd.png)
