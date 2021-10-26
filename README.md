@@ -29,9 +29,10 @@ It ia a simple flask app, which has a API/api/summarize?youtube_video='url' whic
 #### Client side:
 It is a chrome extension which will render the summary of the youtube video by making use of the above API. Just click on summarize button and it will show the summary of the youtube video.
 1. Working of chrome extension:
+![s2](https://user-images.githubusercontent.com/62012906/138928025-48faf828-0f22-4322-be57-4826c694644b.png)
 2. On clicking the summarize button on the popup, if the url is of form https://www.youtube.com/watch?v=* the popup js makes a GET request to our Server API.
-2. A pop up will come on the screeen after calling the API. 
-3. For that after the text is received, it is passed to the content js which then changes the content and show the pop up.
-4. It can be used by loading unpacked from chrome://extensions/.
+3. A pop up will come on the screeen after calling the API. 
+4. For that after the text is received, it is passed to the content js which then changes the content and show the pop up.
+5. It can be used by loading unpacked from chrome://extensions/.
 
 ### Result of the project
