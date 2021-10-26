@@ -7,7 +7,7 @@ It is helpful for generate the summary of YouTube videos.
 3. create complete new sentence with importance of words
 
 ### Project stages:
-
+![s1](https://user-images.githubusercontent.com/62012906/138927706-fe70fb0b-7f27-4a34-8c74-85a446e713a9.png)
 
 ### Implementation details:
 #### Server side:
